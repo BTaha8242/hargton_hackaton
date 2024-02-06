@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: app
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydatabase?createDatabaseIfNotExist=true
+    driver-class-name: org.postgresql.Driver
+    username: myuser
+    password: mypassword
+  application:
+    name: Hackaton
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  batch:
+    job:
+      names: readFileJob
+    jdbc:
+      initialize-schema: always
