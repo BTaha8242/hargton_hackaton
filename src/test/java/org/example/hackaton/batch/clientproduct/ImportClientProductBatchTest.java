@@ -46,7 +46,7 @@ public class ImportClientProductBatchTest {
     }
 
     @Test
-    void should_job_must_run_with_wrong_input_file_and_correct_payload() throws Exception {
+    void given_wrong_input_when_launch_job_then_get_job_instance() throws Exception {
         jobLauncherTestUtils.setJob(job);
         val jobExecution = jobLauncherTestUtils.launchJob(parameters(WRONG_INPUT));
         Assertions.assertThat(ExitStatus.COMPLETED.getExitCode().equals(jobExecution.getStatus().COMPLETED));
@@ -55,7 +55,7 @@ public class ImportClientProductBatchTest {
     }
 
     @Test
-    void should_job_must_run_with_good_input_file_and_correct_payload() throws Exception {
+    void given_good_input_when_launch_job_then_get_user_saved() throws Exception {
         jobLauncherTestUtils.setJob(job);
         val jobExecution = jobLauncherTestUtils.launchJob(parameters(GOOD_INPUT));
         Assertions.assertThat(ExitStatus.COMPLETED.getExitCode().equals(jobExecution.getStatus().COMPLETED));
