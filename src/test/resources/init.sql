@@ -19,8 +19,3 @@ CREATE TABLE client_product
     CLIENT_ID  INTEGER,
     PRODUCTS_ID INTEGER
 );
-
-
-
-insert into client
-values (1, 'taha', 'tahaname', 'tahamail');

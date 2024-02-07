@@ -1,6 +1,7 @@
 package org.example.hackaton.batch.clientproduct;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.hackaton.batch.clientproduct.processor.ClientItemProcessor;
 import org.example.hackaton.dto.ClientFileDto;
 import org.example.hackaton.entity.Client;
@@ -29,6 +30,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 @EnableBatchProcessing
 @RequiredArgsConstructor
+@Slf4j
 public class ImportClientProductBatchConfig {
 
     private final JobRepository jobRepository;
@@ -94,10 +96,11 @@ public class ImportClientProductBatchConfig {
     }
 
     @Bean("importUserJob")
-    public Job importUserJob() {
-        return new JobBuilder("importUserJob", jobRepository)
-                .flow(step())
-                .end()
-                .build();
+    public Job importUserJob() throws Exception {
+            return new JobBuilder("importUserJob", jobRepository)
+                    .flow(step()).on("FAILED").fail()
+                    .end()
+                    .build();
+
     }
 }

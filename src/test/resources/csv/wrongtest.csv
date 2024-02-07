@@ -1,2 +1,2 @@
-refClient,clientName,mail,productName,productPrice,productQuantity
-Janette001,Jane,jane.smith@example.com,testpname,5.5,10
+clientName,mail,productName,productPrice,productQuantity
+Janette001,Jane,jane.smith@example.com,testpname,5.5,dix

@@ -19,14 +19,14 @@ public class ClientItemWriter implements ItemWriter<Client> {
 
 
     @Override
-    public void write(Chunk<? extends Client> chunk) throws Exception {
+    public void write(Chunk<? extends Client> chunk) {
         for (Client client : chunk) {
             client.getProducts().forEach(this::saveProduct);
-            clientRepository.save(client);
+            clientRepository.saveAndFlush(client);
         }
     }
 
     private Product saveProduct(final Product product){
-        return productRepository.save(product);
+        return productRepository.saveAndFlush(product);
     }
 }
